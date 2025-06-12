@@ -1,0 +1,129 @@
+:root {
+  --background-color: #f0f2f5;
+  --app-background: #ffffff;
+  --text-color: #1c1e21;
+  --placeholder-color: #8a8d91;
+  --primary-color: #1877f2;
+  --primary-hover: #166fe5;
+  --danger-color: #fa383e;
+  --danger-hover: #e0282e;
+  --border-color: #dddfe2;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  /* Use flexbox to create the mobile layout */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#app {
+  /* The app will be a flex container with the list growing and the form staying at the bottom */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background: var(--app-background);
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden; /* Hide overflow to prevent scrolling issues */
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: center;
+  padding: 20px 15px 10px;
+  margin: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#todo-list {
+  list-style-type: none;
+  padding: 10px 15px;
+  margin: 0;
+  /* The list will take up all available space and scroll if needed */
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li span {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+li button {
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  line-height: 30px;
+}
+
+li button:hover {
+  background: var(--danger-hover);
+}
+
+#add-todo-form {
+  /* The form is fixed at the bottom */
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+  background: var(--app-background);
+  gap: 10px;
+}
+
+#todo-input {
+  flex-grow: 1;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  font-size: 1rem;
+}
+
+#todo-input::placeholder {
+  color: var(--placeholder-color);
+}
+
+#add-todo-form button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 0 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 0;
+}
+
+#add-todo-form button:hover {
+  background: var(--primary-hover);
+}

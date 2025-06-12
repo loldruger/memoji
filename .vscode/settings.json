@@ -1,8 +1,4 @@
 {
     "IDX.aI.enableInlineCompletion": true,
-    "IDX.aI.enableCodebaseIndexing": true,
-    "deno.enable": true,
-    "deno.lint": true,
-    "deno.documentPreloadLimit": 1000,
-    "deno.unstable": []
+    "IDX.aI.enableCodebaseIndexing": true
 }

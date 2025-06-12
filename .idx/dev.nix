@@ -6,27 +6,35 @@
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    (pkgs.podman.overrideAttrs (oldAttrs: {
-      version = "5.5.1";
-      src = pkgs.fetchFromGitHub {
-        owner = "containers";
-        repo = "podman";
-        rev = "v5.5.1";
-        # This is the correct hash provided by the Nix build failure message.
-        hash = "sha256-/dGFDwjAAc1D88VslVDolf2YVPZ9cHUCQjdaEreQSE0=";
-      };
-    }))
+    # Add firebase-tools for Firebase CLI
+    pkgs.firebase-tools
   ];
 
   # Sets environment variables in the workspace
   env = {};
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
-    extensions = [ "denoland.vscode-deno"];
+    extensions = [];
     # Enable previews
     previews = {
       enable = true;
-      previews = {};
+      previews = {
+        web = {
+          # Use 'firebase serve' which officially supports the --port flag.
+          # This is the simplest and most reliable way.
+          command = [
+            "firebase"
+            "serve"
+            "--only"
+            "hosting"
+            "--project"
+            "memojii"
+            "--port"
+            "$PORT"
+          ];
+          manager = "web";
+        };
+      };
     };
   };
 }
